@@ -1,0 +1,29 @@
+{
+  "name": "strapi-provider-email-azure",
+  "version": "1.0.0",
+  "description": "Strapi Email provider for Azure Communication Service",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Freyb/strapi-provider-email-azure.git"
+  },
+  "keywords": [
+    "strapi",
+    "email",
+    "provider",
+    "azure",
+    "communication service"
+  ],
+  "author": "Balázs Frey",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Freyb/strapi-provider-email-azure/issues"
+  },
+  "homepage": "https://github.com/Freyb/strapi-provider-email-azure#readme",
+  "dependencies": {
+    "@azure/communication-email": "^1.0.0"
+  }
+}
