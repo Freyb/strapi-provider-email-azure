@@ -24,7 +24,11 @@ module.exports = {
             html: options.html || '',
           },
           recipients: {
-            to: options.to,
+            to: [
+              {
+                address: options.to
+              }
+            ],
             cc: options.cc,
             bcc: options.bcc,
           },
