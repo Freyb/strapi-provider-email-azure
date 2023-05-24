@@ -14,6 +14,13 @@ module.exports = {
   init: (providerOptions = {}, settings = {}) => {
     const emailClient = new EmailClient(providerOptions.endpoint);
 
+    const transformAddress = (address) => {
+      if (!address) return address;
+      if (typeof address === 'string') return [{ address }];
+      if (!Array.isArray(address) && address.hasOwnProperty('address')) return [address];
+      return address;
+    };
+
     return {
       send: async (options) => {
         const message = {
@@ -24,9 +31,9 @@ module.exports = {
             html: options.html || '',
           },
           recipients: {
-            to: options.to,
-            cc: options.cc,
-            bcc: options.bcc,
+            to: transformAddress(options.to),
+            cc: transformAddress(options.cc),
+            bcc: transformAddress(options.bcc),
           },
           ...Object.fromEntries(
             Object.entries(options).filter(([key, _val]) =>
