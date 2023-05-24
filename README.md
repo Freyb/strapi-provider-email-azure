@@ -54,10 +54,10 @@ The following fields are supported:
 | Field       | Description                                                       |
 | ----------- | ----------------------------------------------------------------- |
 | from        | Email address of the sender (string)                              |
-| to          | Array of recipients (Array\<EmailAddress>)                        |
+| to          | Array of recipients (string \| EmailAddress \| Array\<EmailAddress>)                        |
+| cc          | Array of recipients who get cc (string \| EmailAddress \| Array\<EmailAddress>)             |
+| bcc         | Array of recipients who get bcc (string \| EmailAddress \| Array\<EmailAddress>)            |
 | replyTo     | Email address to which replies are sent (Array\<EmailAddress>)    |
-| cc          | Array of recipients who get cc (Array\<EmailAddress>)             |
-| bcc         | Array of recipients who get bcc (Array\<EmailAddress>)            |
 | subject     | Subject of the email (string)                                     |
 | text        | Plaintext version of the message (string)                         |
 | html        | HTML version of the message (string)                              |
@@ -70,7 +70,7 @@ type EmailAddress {
     address: string,
     displayName: string
 }
-type EmailAddress {
+type Attachment {
     name: string,
     contentType: string,
     contentInBase64: string
@@ -78,8 +78,8 @@ type EmailAddress {
 ```
 
 For more information, please refer to @azure/communication-email documentations:
-[npm](https://www.npmjs.com/package/@azure/communication-email)
-[EmailMessage interface](https://learn.microsoft.com/en-us/javascript/api/@azure/communication-email/emailmessage?view=azure-node-latest#@azure-communication-email-emailmessage-content)
+- [npm](https://www.npmjs.com/package/@azure/communication-email)
+- [EmailMessage interface](https://learn.microsoft.com/en-us/javascript/api/@azure/communication-email/emailmessage?view=azure-node-latest#@azure-communication-email-emailmessage-content)
 
 ## How to create Azure Communication Service
 
