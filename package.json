@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/Freyb/strapi-provider-email-azure#readme",
   "dependencies": {
-    "@azure/communication-email": "^1.0.0"
+    "@azure/communication-email": "1.0.1-alpha.20250312.1"
   }
 }
