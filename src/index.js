@@ -1,5 +1,5 @@
 const { EmailClient } = require('@azure/communication-email');
-const { DefaultAzureCredential } = require('@azure/identity');
+const { ManagedIdentityCredential } = require('@azure/identity');
 
 class ValidationError extends Error {
   constructor(message) {
@@ -26,7 +26,7 @@ module.exports = {
   init: (providerOptions = {}, settings = {}) => {
     let emailClient;
     if (providerOptions.useManagedIdentity) {
-      const credential = new DefaultAzureCredential();
+      const credential = new ManagedIdentityCredential(providerOptions.identityClientId);
       emailClient = new EmailClient(providerOptions.endpoint, credential);
     } else {
       emailClient = new EmailClient(providerOptions.endpoint);
