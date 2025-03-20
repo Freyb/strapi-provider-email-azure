@@ -1,6 +1,6 @@
 {
-  "name": "strapi-provider-email-azure-test-mi",
-  "version": "1.0.13",
+  "name": "strapi-provider-email-azure",
+  "version": "1.0.3",
   "description": "Strapi Email provider for Azure Communication Service",
   "main": "src/index.js",
   "scripts": {

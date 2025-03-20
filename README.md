@@ -122,3 +122,35 @@ For more information, please refer to @azure/communication-email documentations:
 2. In **Email services/MailFrom addresses** you can create additional email addresses
 3. By default DoNotReply@yourdomain is created, and you can store it as the fallback email address of `strapi-provider-email-azure` in your environment variables\
 `FALLBACK_EMAIL=DoNotReply@yourdomain`
+
+<!-- This section provides optional instructions for configuring Managed Identity in the Strapi provider for Azure email. -->
+### 6. (Optional) Managed Identity if running on Azure instances
+
+#### Create and assign an identity
+1. Refer https://learn.microsoft.com/en-us/entra/identity/managed-identities-azure-resources/how-manage-user-assigned-managed-identities?pivots=identity-mi-methods-azp on creating and managing identities.
+2. Assign the identity to Azure Communication Service with the role 'Communication and Email Service Owner' or create a custom role definition to restrict the permissions.
+
+![](https://raw.githubusercontent.com/Freyb/strapi-provider-email-azure/main/images/connect_domains.png)
+
+
+#### Update plugins.js
+Then in your `config/plugins.js`:
+```js
+module.exports = ({ env }) => ({
+  // ...
+  email: {
+    config: {
+      provider: 'strapi-provider-email-azure',
+      providerOptions: {
+        endpoint: env('AZURE_ENDPOINT'), // ex: https://<your-resource-name>-acsendpoint.<your-resource-location>.communication.azure.com
+        useManagedIdentity: true,
+        identityClientId: env('IDENTITY_CLIENT_ID') // GUID from the identity, ex : cf5c7b28-9eaa-47a1-b313-xxxxxxx
+      },
+      settings: {
+        defaultFrom: env('FALLBACK_EMAIL'),
+      },
+    },
+  },
+  // ...
+});
+```
